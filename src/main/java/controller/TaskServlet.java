@@ -4,7 +4,10 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import dto.TaskDTO;
 import service.TaskService;
 
+import javax.servlet.ServletConfig;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -12,8 +15,10 @@ import java.io.IOException;
 import java.util.List;
 
 public class TaskServlet extends HttpServlet {
-    private final TaskService taskService;
-    private final ObjectMapper objectMapper;
+    private  TaskService taskService;
+    private  ObjectMapper objectMapper;
+
+    public TaskServlet() {}
 
     public TaskServlet(TaskService taskService, ObjectMapper objectMapper) {
         this.taskService = taskService;

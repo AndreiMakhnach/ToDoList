@@ -4,4 +4,24 @@
 
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
+
+  <servlet>
+    <servlet-name>TaskServlet</servlet-name>
+    <servlet-class>controller.TaskServlet</servlet-class>
+  </servlet>
+
+  <servlet>
+    <servlet-name>UserServlet</servlet-name>
+    <servlet-class>controller.UserServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>TaskServlet</servlet-name>
+    <url-pattern>/tasks/*</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>UserServlet</servlet-name>
+    <url-pattern>/users/*</url-pattern>
+  </servlet-mapping>
 </web-app>

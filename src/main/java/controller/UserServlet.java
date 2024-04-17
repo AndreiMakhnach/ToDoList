@@ -4,7 +4,10 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import dto.UserDTO;
 import service.UserService;
 
+import javax.servlet.ServletConfig;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -12,8 +15,10 @@ import java.io.IOException;
 import java.util.List;
 
 public class UserServlet extends HttpServlet {
-    private final UserService userService;
-    private final ObjectMapper objectMapper;
+    private  UserService userService;
+    private  ObjectMapper objectMapper;
+
+    public UserServlet() {}
 
     public UserServlet(UserService userService, ObjectMapper objectMapper) {
         this.userService = userService;

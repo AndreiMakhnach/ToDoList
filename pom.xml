@@ -52,7 +52,7 @@
         <configuration>
           <webResources>
             <resource>
-              <directory>tWEB-INF/classes</directory>
+              <directory>WEB-INF/classes</directory>
             </resource>
           </webResources>
         </configuration>
