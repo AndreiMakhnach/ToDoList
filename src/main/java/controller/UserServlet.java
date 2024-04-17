@@ -20,6 +20,15 @@ public class UserServlet extends HttpServlet {
 
     public UserServlet() {}
 
+    //Метод добавил так как просто пустой конструктор требует инициализации объектов
+    @Override
+    public void init(ServletConfig config) throws ServletException {
+        super.init(config);
+        ServletContext context = config.getServletContext();
+        this.userService = (UserService) context.getAttribute("userService");
+        this.objectMapper = new ObjectMapper();
+    }
+
     public UserServlet(UserService userService, ObjectMapper objectMapper) {
         this.userService = userService;
         this.objectMapper = objectMapper;

@@ -20,6 +20,15 @@ public class TaskServlet extends HttpServlet {
 
     public TaskServlet() {}
 
+    //Метод добавил так как просто пустой конструктор требует инициализации объектов
+    @Override
+    public void init(ServletConfig config) throws ServletException {
+        super.init(config);
+        ServletContext context = config.getServletContext();
+        this.taskService = (TaskService) context.getAttribute("taskService");
+        this.objectMapper = new ObjectMapper();
+    }
+
     public TaskServlet(TaskService taskService, ObjectMapper objectMapper) {
         this.taskService = taskService;
         this.objectMapper = objectMapper;
