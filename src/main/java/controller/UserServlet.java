@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
+@WebServlet("/users/*")
 public class UserServlet extends HttpServlet {
     private  UserService userService;
     private  ObjectMapper objectMapper;
@@ -26,6 +27,10 @@ public class UserServlet extends HttpServlet {
         super.init(config);
         ServletContext context = config.getServletContext();
         this.userService = (UserService) context.getAttribute("userService");
+        if (this.userService == null) {
+            // Если userService не был инициализирован, выведите сообщение об ошибке
+            throw new ServletException("UserService not initialized. Make sure it is properly configured and injected.");
+        }
         this.objectMapper = new ObjectMapper();
     }
 

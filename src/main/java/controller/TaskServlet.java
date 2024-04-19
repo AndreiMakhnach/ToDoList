@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
+@WebServlet("/tasks/*")
 public class TaskServlet extends HttpServlet {
     private  TaskService taskService;
     private  ObjectMapper objectMapper;
@@ -26,6 +27,9 @@ public class TaskServlet extends HttpServlet {
         super.init(config);
         ServletContext context = config.getServletContext();
         this.taskService = (TaskService) context.getAttribute("taskService");
+        if (this.taskService == null) {
+            throw new ServletException("TaskService not initialized. Make sure it is properly configured and injected.");
+        }
         this.objectMapper = new ObjectMapper();
     }
 
