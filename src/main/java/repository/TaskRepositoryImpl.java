@@ -22,7 +22,7 @@ public class TaskRepositoryImpl implements TaskRepository{
         Task task = null;
         try {
             String query = "SELECT * FROM tasks WHERE id = ?";
-            PreparedStatement statement = connection.prepareStatement(query);
+            PreparedStatement statement = connection.prepareStatement(query); // почему ресурсы не закрываешь? Нужно использовать try-with-resources
             statement.setLong(1, id);
             ResultSet resultSet = statement.executeQuery();
             if (resultSet.next()) {
