@@ -55,12 +55,7 @@ public class UserDTO {
         if (getClass() != obj.getClass())
             return false;
         UserDTO other = (UserDTO) obj;
-        if (id == null) {
-            if (other.id != null)
-                return false;
-        } else if (!id.equals(other.id))
-            return false;
-        return true;
+        return id.equals(other.id);
     }
 
     @Override
